@@ -2,7 +2,7 @@ import json
 import os
 import re
 import sys
-import sqlite3
+from run_interface import LOCAL_MODEL_PATH
 
 try:
     from llama_cpp import Llama
@@ -195,7 +195,7 @@ Thought: """
 
 if __name__ == "__main__":
     question = sys.argv[1]
-    model_path = "dolphin-2.2.1-mistral-7b.Q5_K_M.gguf"
+    model_path = LOCAL_MODEL_PATH
     with open("example-prompt.txt", "r") as f:
         prompt = f.read().format(question=question.strip())
         answer, trace = execute(

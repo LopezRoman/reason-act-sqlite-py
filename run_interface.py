@@ -8,8 +8,10 @@ from llama_cpp import Llama
 import sqlite_utils
 
 
-DB_PATH = "example.db"
-MODEL_PATH = "dolphin-2.2.1-mistral-7b.Q5_K_M.gguf"
+DB_PATH = "webui.db"
+#LOCAL_MODEL_PATH = "dolphin-2.2.1-mistral-7b.Q5_K_M.gguf"
+LOCAL_MODEL_PATH = r"C:\Users\LopezRomanDev\.ollama\models\blobs\sha256-8eeb52dfb3bb9aefdf9d1ef24b3bdbcfbe82238798c4b918278320b6fcef18fe"
+
 # columns to not ever use or show
 IGNORED_COLUMNS = ["rowid", "created_at", "_meta_score"]
 TABLE_FTS = {
@@ -137,8 +139,8 @@ def search(db, table_name, query):
 
 
 # Utils n stuff
-def load_model(model_path):
-    return Llama(model_path=model_path, n_ctx=2048)
+def load_llama_model(model_path):
+    return Llama(model_path=model_path, n_ctx=131072)
 
 
 def execute(llm, question):
@@ -284,5 +286,5 @@ Thought:""".strip()
 if __name__ == "__main__":
     question = sys.argv[1]
     db = load_db(DB_PATH)
-    llm = load_model(MODEL_PATH)
+    llm = load_llama_model(LOCAL_MODEL_PATH)
     answer, trace = execute(llm, question)
