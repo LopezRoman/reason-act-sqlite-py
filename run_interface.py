@@ -13,16 +13,27 @@ DB_PATH = "webui.db"
 LOCAL_MODEL_PATH = r"C:\Users\LopezRomanDev\.ollama\models\blobs\sha256-8eeb52dfb3bb9aefdf9d1ef24b3bdbcfbe82238798c4b918278320b6fcef18fe"
 
 # columns to not ever use or show
-IGNORED_COLUMNS = ["rowid", "created_at", "_meta_score"]
-TABLE_FTS = {
-    "users": ["creatorDescription"],
-    "jobs": ["title", "description"],
-    "experiences": ["projectName", "experienceDescription", "jobRole"],
-    "games": ["name", "description"],
-    "game_passes": ["name", "description"],
-}
+#IGNORED_COLUMNS = ["rowid", "created_at", "_meta_score"]
+IGNORED_COLUMNS = []
+
 # search-tables: useful for getting a list of tables that support full-text search. input 1: table name.
 # search: a full-text search engine. useful to find records with descriptions containing some text. input 1: table name, input 2: a search query.
+TABLE_FTS = {
+    #"users": ["creatorDescription"],
+    #"jobs": ["title", "description"],
+    #"experiences": ["projectName", "experienceDescription", "jobRole"],
+    #"games": ["name", "description"],
+    #"game_passes": ["name", "description"],
+    
+    #"auth": ["authDescription"],
+    #"chat": ["title"],
+    #"document": ["name", "title"],
+    #"file": ["filename"],
+    #"model": ["name"],
+    #"prompt": ["title"],
+    #"user": ["name"],
+}
+
 ACTIONS = """
 tables: useful for getting the names of tables available. no input.
 columns: useful for looking all of the columns for a given table. input 1: table name.
